@@ -21,3 +21,73 @@
     transform: scale(1.08);
   }
 }
+
+@keyframes floatGlyph {
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.16;
+  }
+  50% {
+    transform: translateY(-12px);
+    opacity: 0.34;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .ambient-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(circle at center, black 38%, transparent 90%);
+  }
+
+  .ambient-noise {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 0.6px, transparent 0.6px);
+    background-size: 3px 3px;
+    mix-blend-mode: soft-light;
+  }
+
+  .parallax-orb {
+    will-change: transform;
+  }
+
+  .ambient-glyph {
+    position: absolute;
+    color: rgba(205, 191, 255, 0.35);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    animation: floatGlyph 8s ease-in-out infinite;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 560ms ease, transform 560ms ease;
+  }
+
+  .reveal-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glyph {
+    animation: none;
+  }
+
+  .reveal-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

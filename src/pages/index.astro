@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import massielProfile from '../assets/Massiel_Perozo - portafolio.png';
+import ibmLogo from '../assets/ibm.svg';
+import fortinetLogo from '../assets/Fortinet_logo.svg';
 
 const navItems = [
 	{ label: 'Inicio', href: '#inicio' },
@@ -28,8 +31,14 @@ const skills = [
 ];
 
 const projects = [
-	'Framework de Ciberseguridad Aplicada',
-	'Intelligent Telegram Bot',
+	{
+		title: 'Framework de Ciberseguridad Aplicada',
+		href: 'https://github.com/massiperozo/ciberseguridad-proyecto.git',
+	},
+	{
+		title: 'Intelligent Telegram Bot',
+		href: 'https://github.com/massiperozo/TelegramBotRedes.git',
+	},
 ];
 
 const socialLinks = [
@@ -40,15 +49,21 @@ const socialLinks = [
 ---
 
 <Layout>
-	<div class="relative min-h-screen overflow-x-clip bg-[#0F0F12] text-white">
-		<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-			<div class="absolute -left-16 top-12 h-56 w-56 rounded-full bg-[#8B5CF6]/15 blur-3xl"></div>
-			<div class="absolute -right-20 top-44 h-72 w-72 rounded-full bg-[#8B5CF6]/10 blur-3xl"></div>
-			<div class="absolute bottom-8 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-[#8B5CF6]/10 blur-[120px]"></div>
-			<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(139,92,246,0.12),_transparent_38%)]"></div>
+	<div class="portfolio-shell relative min-h-screen overflow-x-clip bg-[#0F0F12] text-white">
+		<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+			<div class="ambient-grid absolute inset-0 opacity-45"></div>
+			<div class="ambient-noise absolute inset-0 opacity-20"></div>
+			<div data-parallax="0.06" class="parallax-orb absolute -left-16 top-8 h-64 w-64 rounded-full bg-[#8B5CF6]/20 blur-3xl"></div>
+			<div data-parallax="0.1" class="parallax-orb absolute -right-20 top-64 h-80 w-80 rounded-full bg-[#8B5CF6]/15 blur-3xl"></div>
+			<div data-parallax="0.14" class="parallax-orb absolute bottom-[-7rem] left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[#8B5CF6]/10 blur-[140px]"></div>
+			<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(139,92,246,0.18),transparent_42%)]"></div>
+			<span class="ambient-glyph left-[10%] top-[18%] hidden md:block">&#123; &#125;</span>
+			<span class="ambient-glyph right-[12%] top-[22%] hidden md:block">&lt;/&gt;</span>
+			<span class="ambient-glyph left-[20%] top-[58%] hidden md:block">//</span>
+			<span class="ambient-glyph right-[14%] top-[68%] hidden md:block">#</span>
 		</div>
 
-		<header class="sticky top-0 z-40 border-b border-white/10 bg-[#0F0F12]/85 backdrop-blur-xl">
+		<header class="sticky top-0 z-40 border-b border-white/10 bg-[#0F0F12]/75 backdrop-blur-xl">
 			<div class="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
 				<a href="#inicio" class="text-sm font-semibold tracking-[0.24em] text-white/90">PM</a>
 				<nav aria-label="Principal" class="hidden md:block">
@@ -58,6 +73,7 @@ const socialLinks = [
 								<li>
 									<a
 										href={item.href}
+										data-nav-link
 										class="transition hover:text-[#8B5CF6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F0F12]"
 									>
 										{item.label}
@@ -77,7 +93,7 @@ const socialLinks = [
 		</header>
 
 		<main class="mx-auto flex w-full max-w-6xl flex-col gap-20 px-5 pb-14 pt-10 md:gap-28 md:px-8 md:pt-14">
-			<section id="inicio" class="grid gap-10 lg:grid-cols-[1.45fr_0.9fr] lg:items-start">
+			<section id="inicio" data-section data-reveal class="reveal-up grid gap-10 lg:grid-cols-[1.45fr_0.9fr] lg:items-start">
 				<div class="space-y-8">
 					<p class="inline-flex w-fit rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white/70">
 						Portafolio profesional
@@ -101,26 +117,40 @@ const socialLinks = [
 
 				<aside class="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
 					<div class="rounded-2xl border border-dashed border-[#8B5CF6]/35 bg-[#111118] p-5 text-center">
-						<p class="text-xs uppercase tracking-[0.24em] text-white/50">Foto profesional</p>
-						<div class="mt-4 grid place-items-center rounded-xl border border-white/10 bg-[#0B0B0E] px-5 py-12">
-							<span class="text-sm text-white/45">Placeholder de imagen</span>
+						<div class="mt-4 overflow-hidden rounded-xl border border-white/10 bg-[#0B0B0E]">
+							<img
+								src={massielProfile.src}
+								alt="Retrato de Massiel Perozo"
+								class="h-64 w-full object-cover sm:h-72"
+								loading="lazy"
+							/>
 						</div>
 					</div>
 					<div class="mt-4 space-y-3">
 						<p class="text-xs uppercase tracking-[0.24em] text-white/50">Certificaciones</p>
 						<div class="grid grid-cols-2 gap-3">
-							<div class="grid place-items-center rounded-xl border border-white/10 bg-[#111118] p-3 text-sm text-white/75">
-								IBM Logo
+							<div class="grid place-items-center rounded-xl border border-white/10 bg-[#111118] p-3">
+								<img
+									src={ibmLogo.src}
+									alt="Logo de certificación IBM"
+									class="h-10 w-auto object-contain"
+									loading="lazy"
+								/>
 							</div>
-							<div class="grid place-items-center rounded-xl border border-white/10 bg-[#111118] p-3 text-sm text-white/75">
-								Fortinet Logo
+							<div class="grid place-items-center rounded-xl border border-white/10 bg-[#111118] p-3">
+								<img
+									src={fortinetLogo.src}
+									alt="Logo de certificación Fortinet"
+									class="h-10 w-auto object-contain"
+									loading="lazy"
+								/>
 							</div>
 						</div>
 					</div>
 				</aside>
 			</section>
 
-			<section aria-labelledby="skills-title" class="space-y-6">
+			<section data-section data-reveal aria-labelledby="skills-title" class="reveal-up space-y-6">
 				<h2 id="skills-title" class="text-sm font-semibold uppercase tracking-[0.22em] text-[#C6B4FF]">
 					Skills Stack
 				</h2>
@@ -136,7 +166,7 @@ const socialLinks = [
 				</div>
 			</section>
 
-			<section id="proyectos" aria-labelledby="projects-title" class="space-y-6">
+			<section id="proyectos" data-section data-reveal aria-labelledby="projects-title" class="reveal-up space-y-6">
 				<h2 id="projects-title" class="text-sm font-semibold uppercase tracking-[0.22em] text-[#C6B4FF]">
 					Proyectos
 				</h2>
@@ -145,10 +175,12 @@ const socialLinks = [
 						projects.map((project) => (
 							<li>
 								<a
-									href="#"
+									href={project.href}
+									target={project.href.startsWith('http') ? '_blank' : undefined}
+									rel={project.href.startsWith('http') ? 'noopener noreferrer' : undefined}
 									class="flex items-center justify-between px-5 py-5 text-base font-medium text-white/85 transition hover:bg-[#8B5CF6]/10 hover:text-[#8B5CF6] sm:text-lg"
 								>
-									<span>{project}</span>
+									<span>{project.title}</span>
 									<span class="text-white/35">→</span>
 								</a>
 							</li>
@@ -157,7 +189,7 @@ const socialLinks = [
 				</ul>
 			</section>
 
-			<section id="sobre-mi" class="grid gap-6 rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:grid-cols-2 md:items-center md:p-8">
+			<section id="sobre-mi" data-section data-reveal class="reveal-up grid gap-6 rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:grid-cols-2 md:items-center md:p-8">
 				<div>
 					<p class="text-sm font-semibold uppercase tracking-[0.22em] text-[#C6B4FF]">Sobre Mí</p>
 					<h2 class="mt-3 text-2xl font-bold leading-tight text-white sm:text-3xl">
@@ -171,7 +203,7 @@ const socialLinks = [
 			</section>
 		</main>
 
-		<footer id="contacto" class="border-t border-white/10 bg-[#0B0B0E]/80">
+		<footer id="contacto" data-section data-reveal class="reveal-up border-t border-white/10 bg-[#0B0B0E]/80">
 			<div class="mx-auto flex w-full max-w-6xl flex-col gap-5 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-8">
 				<div class="space-y-2">
 					<p class="text-xs uppercase tracking-[0.22em] text-white/45">Contacto</p>
@@ -195,3 +227,69 @@ const socialLinks = [
 		</footer>
 	</div>
 </Layout>
+
+<script>
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	if (!reducedMotion) {
+		const parallaxElements = document.querySelectorAll<HTMLElement>('[data-parallax]');
+		const reveals = document.querySelectorAll<HTMLElement>('[data-reveal]');
+		const navLinks = document.querySelectorAll<HTMLElement>('[data-nav-link]');
+		const sections = document.querySelectorAll<HTMLElement>('[data-section]');
+
+		let ticking = false;
+		const updateParallax = () => {
+			const scrollY = window.scrollY;
+			parallaxElements.forEach((element) => {
+				const speed = Number(element.getAttribute('data-parallax')) || 0;
+				element.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+			});
+			ticking = false;
+		};
+
+		window.addEventListener('scroll', () => {
+			if (!ticking) {
+				window.requestAnimationFrame(updateParallax);
+				ticking = true;
+			}
+		});
+
+		const revealObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+					}
+				});
+			},
+			{ threshold: 0.18, rootMargin: '0px 0px -12% 0px' }
+		);
+
+		reveals.forEach((section) => revealObserver.observe(section));
+
+		const activeObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return;
+
+					const sectionId = entry.target.id;
+					navLinks.forEach((link) => {
+						const isActive = link.getAttribute('href') === `#${sectionId}`;
+						link.classList.toggle('text-[#8B5CF6]', isActive);
+						link.classList.toggle('font-semibold', isActive);
+						link.classList.toggle('text-white/70', !isActive);
+					});
+				});
+			},
+			{ threshold: 0.45 }
+		);
+
+		sections.forEach((section) => {
+			if (section.id) activeObserver.observe(section);
+		});
+
+		updateParallax();
+	} else {
+		document.querySelectorAll('[data-reveal]').forEach((section) => section.classList.add('is-visible'));
+	}
+</script>
