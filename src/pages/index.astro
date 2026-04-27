@@ -90,7 +90,7 @@ const skillCards = [
 
 const contacts = [
   { label: 'EMAIL', value: 'massiperozob@gmail.com', href: 'mailto:massiperozob@gmail.com' },
-  { label: 'LINKEDIN', value: '@massiperozo', href: 'https://linkedin.com' },
+  { label: 'LINKEDIN', value: '@massiperozo', href: 'https://www.linkedin.com/in/massiel-perozo-5b30b4304/' },
   { label: 'GITHUB', value: '@massiperozo', href: 'https://github.com/massiperozo' },
 ];
 ---
@@ -189,19 +189,19 @@ const contacts = [
         <p class="text-[10px] uppercase tracking-[0.45em] text-white/65">HOME</p>
         <h1 class="mt-6 max-w-4xl text-balance text-5xl font-bold leading-[1.07] tracking-tight text-white sm:text-6xl lg:text-7xl">
           Hola, soy Massiel, una
-          <span class="bg-gradient-to-r from-[#8B5CF6] to-[#C4B5FD] bg-clip-text text-transparent">creative developer</span>
+          <span class="bg-gradient-to-r from-[#8B5CF6] to-[#C4B5FD] bg-clip-text text-transparent">desarrolladora autodidacta y creativa</span>
         </h1>
         <p class="mt-7 max-w-3xl text-lg leading-relaxed text-[#A1A1AA]">
           Transformo desafios complejos en productos digitales seguros, eficientes y centrados en el usuario,
           fusionando expertise tecnico con creatividad y estetica.
         </p>
         <div class="mt-11 flex flex-wrap items-center justify-center gap-7 text-xs text-[#A1A1AA]">
-          <span>Venezuela - Hora local 10:45</span>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B5CF6]">LinkedIn</a>
+          <span id="local-time">Venezuela - Hora local <span id="local-time-value">--:--</span></span>
+          <a href="https://www.linkedin.com/in/massiel-perozo-5b30b4304/" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B5CF6]">LinkedIn</a>
           <a href="https://github.com/massiperozo" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B5CF6]">GitHub</a>
           <a href="mailto:massiperozob@gmail.com" class="hover:text-[#8B5CF6]">Email</a>
         </div>
-        <a href="#contacto" class="mt-12 inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/35 bg-[#8B5CF6]/15 px-5 py-2 text-sm font-semibold text-[#C4B5FD] transition hover:translate-y-[-1px] hover:bg-[#8B5CF6]/25">let's work together <span aria-hidden="true">-&gt;</span></a>
+        <a href="#contacto" class="mt-12 inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/35 bg-[#8B5CF6]/15 px-5 py-2 text-sm font-semibold text-[#C4B5FD] transition hover:translate-y-[-1px] hover:bg-[#8B5CF6]/25">trabajemos juntos<span aria-hidden="true">-&gt;</span></a>
       </section>
 
       <section id="sobre-mi" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
@@ -210,7 +210,7 @@ const contacts = [
         <div class="mt-8 grid gap-4 md:grid-cols-6">
           <article class="panel-card md:col-span-2">
             <p class="panel-title">about-me</p>
-            <p class="mt-4 text-sm leading-relaxed text-[#A1A1AA]">Hola, soy Massiel, una desarrolladora Fullstack enfocada en Ciberseguridad.</p>
+            <p class="mt-4 text-sm leading-relaxed text-[#A1A1AA]">Soy una desarrolladora Fullstack enfocada en Ciberseguridad.</p>
             <p class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">Mi enfoque esta en el punto medio entre creatividad y precision tecnica.</p>
           </article>
           <article class="panel-card md:col-span-2">
@@ -225,7 +225,7 @@ const contacts = [
           <article class="panel-card md:col-span-2">
             <p class="panel-title">me-online</p>
             <div class="mt-4 space-y-2 text-sm">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">linkedin</a>
+              <a href="https://www.linkedin.com/in/massiel-perozo-5b30b4304/" target="_blank" rel="noopener noreferrer" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">linkedin</a>
               <a href="https://github.com/massiperozo" target="_blank" rel="noopener noreferrer" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">github</a>
               <a href="mailto:massiperozob@gmail.com" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">email</a>
             </div>
@@ -331,7 +331,7 @@ const contacts = [
       <section id="contacto" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
         <p class="text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8B5CF6]">contact</p>
         <h2 class="mt-3 text-center text-balance text-5xl font-bold leading-tight text-white sm:text-6xl">
-          Let's work <span class="text-[#8B5CF6]">together</span>
+          Trabajemos <span class="text-[#8B5CF6]">juntos</span>
         </h2>
         <p class="mx-auto mt-5 max-w-3xl text-center text-xl text-[#A1A1AA]">Tienes un proyecto en mente que necesite una vision tecnica y estrategica? Hablemos y hagamoslo realidad.</p>
 
@@ -386,6 +386,21 @@ const contacts = [
 
 <script>
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function updateVenezuelaTime() {
+    const el = document.getElementById('local-time-value');
+    if (!el) return;
+    const now = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: 'America/Caracas',
+    };
+    el.textContent = new Intl.DateTimeFormat('es-VE', options).format(now);
+  }
+  updateVenezuelaTime();
+  setInterval(updateVenezuelaTime, 60000);
 
   if (!reducedMotion) {
     const parallaxElements = document.querySelectorAll<HTMLElement>('[data-parallax]');
