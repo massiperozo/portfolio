@@ -9,6 +9,7 @@ import technovationLogo from '../assets/TechnovationGirls-portafolio.png';
 const topNav = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Sobre Mi', href: '#sobre-mi' },
+  { label: 'Experiencia', href: '#experiencia' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contacto', href: '#contacto' },
@@ -17,9 +18,37 @@ const topNav = [
 const sideNav = [
   { label: 'Inicio', href: '#inicio', icon: 'home' },
   { label: 'Sobre Mi', href: '#sobre-mi', icon: 'user' },
+  { label: 'Experiencia', href: '#experiencia', icon: 'experience' },
   { label: 'Proyectos', href: '#proyectos', icon: 'briefcase' },
   { label: 'Skills', href: '#skills', icon: 'flask' },
   { label: 'Contacto', href: '#contacto', icon: 'mail' },
+];
+
+const experiences = [
+  {
+    role: 'Pasante de desarrollo',
+    company: 'Laboratorio de Innovación Digital',
+    period: 'feb. 2026 - actualidad · 3 meses',
+    description:
+      'Desarrollo de una herramienta de medición cultural para las empresas. Dicha herramienta permite apoyar a distintas empresas con su evolución y mejora con el apoyo de nuevas herramientas e Inteligencia Artificial.',
+    tags: [],
+  },
+  {
+    role: 'Pasante de desarrollo',
+    company: 'Uptek Solutions · Contrato de formación',
+    period: 'feb. 2026 - abr. 2026 · 3 meses',
+    description:
+      'Desarrollo de un Sistema Centralizado de Notificaciones, para el envío de notificaciones a distintas plataformas con distintas plantillas.',
+    tags: ['Kubernetes', 'Gestión de eventos', '1 aptitud más'],
+  },
+  {
+    role: 'Mentora de código',
+    company: 'Technovation Girls Venezuela',
+    period: '2025',
+    description:
+      'Mentoría de código para diversos grupos de niñas, con la oportunidad de conectar con niñas jóvenes e inspirarlas a entrar al mundo de la tecnología.',
+    tags: ['Mentorship', 'Education', 'Community'],
+  },
 ];
 
 const projects = [
@@ -36,15 +65,6 @@ const projects = [
     tags: ['Node.js', 'JavaScript', 'Telegram API', 'Automation'],
     year: '2024',
     href: 'https://github.com/massiperozo/TelegramBotRedes.git',
-  },
-];
-
-const miniProjects = [
-  {
-    title: 'Technovation Girls Venezuela',
-    tags: ['Mentorship', 'Education', 'Community'],
-    year: '2025',
-    href: '#sobre-mi',
   },
 ];
 
@@ -90,7 +110,7 @@ const skillCards = [
 
 const contacts = [
   { label: 'EMAIL', value: 'massiperozob@gmail.com', href: 'mailto:massiperozob@gmail.com' },
-  { label: 'LINKEDIN', value: '@massiperozo', href: 'https://www.linkedin.com/in/massiel-perozo-5b30b4304/' },
+  { label: 'LINKEDIN', value: '@massielperozo', href: 'https://www.linkedin.com/in/massiel-perozo-5b30b4304/' },
   { label: 'GITHUB', value: '@massiperozo', href: 'https://github.com/massiperozo' },
 ];
 ---
@@ -137,6 +157,15 @@ const contacts = [
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
                   <rect x="3" y="7" width="18" height="13" rx="2" />
                   <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" />
+                </svg>
+              )}
+              {item.icon === 'experience' && (
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                  <path d="M12 3v18" />
+                  <path d="M7 7h10" />
+                  <path d="M7 17h10" />
+                  <path d="M8.5 7c0 2.2 1.5 4 3.5 4s3.5-1.8 3.5-4" />
+                  <path d="M8.5 17c0-2.2 1.5-4 3.5-4s3.5 1.8 3.5 4" />
                 </svg>
               )}
               {item.icon === 'flask' && (
@@ -186,7 +215,6 @@ const contacts = [
 
     <main class="md:ml-[4.5rem]">
       <section id="inicio" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-center px-5 py-20 text-center md:px-8">
-        <p class="text-[10px] uppercase tracking-[0.45em] text-white/65">HOME</p>
         <h1 class="mt-6 max-w-4xl text-balance text-5xl font-bold leading-[1.07] tracking-tight text-white sm:text-6xl lg:text-7xl">
           Hola, soy Massiel, una
           <span class="bg-gradient-to-r from-[#8B5CF6] to-[#C4B5FD] bg-clip-text text-transparent">desarrolladora autodidacta y creativa</span>
@@ -205,50 +233,91 @@ const contacts = [
       </section>
 
       <section id="sobre-mi" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
-        <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8B5CF6]">showcase</p>
-        <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">About Me</h2>
-        <div class="mt-8 grid gap-4 md:grid-cols-6">
-          <article class="panel-card md:col-span-2">
-            <p class="panel-title">about-me</p>
-            <p class="mt-4 text-sm leading-relaxed text-[#A1A1AA]">Soy una desarrolladora Fullstack enfocada en Ciberseguridad.</p>
-            <p class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">Mi enfoque esta en el punto medio entre creatividad y precision tecnica.</p>
-          </article>
-          <article class="panel-card md:col-span-2">
-            <p class="panel-title">where-i-work</p>
-            <p class="mt-4 text-sm text-[#A1A1AA]">Actualmente en Venezuela.</p>
-            <p class="mt-2 text-sm text-[#A1A1AA]">Disponible para colaboraciones remotas en Latinoamerica y worldwide.</p>
-          </article>
-          <article class="panel-card md:col-span-2">
-            <p class="panel-title">collaborations</p>
-            <p class="mt-4 text-sm text-[#A1A1AA]">Trabajo con agencias, estudios digitales e iniciativas educativas con impacto.</p>
-          </article>
-          <article class="panel-card md:col-span-2">
-            <p class="panel-title">me-online</p>
-            <div class="mt-4 space-y-2 text-sm">
-              <a href="https://www.linkedin.com/in/massiel-perozo-5b30b4304/" target="_blank" rel="noopener noreferrer" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">linkedin</a>
-              <a href="https://github.com/massiperozo" target="_blank" rel="noopener noreferrer" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">github</a>
-              <a href="mailto:massiperozob@gmail.com" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">email</a>
-            </div>
-          </article>
-          <article class="panel-card panel-card-purple relative overflow-hidden md:col-span-2">
-            <p class="panel-title">portrait</p>
-            <div class="mt-5 grid place-items-center rounded-xl border border-black/20 bg-[#8B5CF6] p-5">
-              <img src={massielProfile.src} alt="Retrato de Massiel Perozo" class="h-44 w-full rounded-lg object-cover" loading="lazy" />
-            </div>
-          </article>
-          <article class="panel-card md:col-span-2">
-            <p class="panel-title">instituciones</p>
-            <div class="mt-4 flex items-center gap-3">
-              <img src={technovationLogo.src} alt="Technovation Girls" class="h-8 w-auto" loading="lazy" />
-              <img src={ucaLogo.src} alt="UCAB" class="h-8 w-auto" loading="lazy" />
-            </div>
-          </article>
+        <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">Sobre mi</h2>
+        <div class="mt-8 grid gap-3 md:grid-cols-3">
+          <div class="flex flex-col gap-3">
+            <article class="panel-card">
+              <p class="panel-title">about-me</p>
+              <p class="mt-4 text-sm leading-relaxed text-[#A1A1AA]">Ingeniera Informática en formación con un enfoque apasionado en el Desarrollo Fullstack y la Ciberseguridad. Mi valor diferencial radica en la intersección entre la robustez técnica y la visión estratégica de marketing.</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">Con experiencia en la creación de soluciones escalables en Python y JavaScript, y certificaciones internacionales por IBM y Fortinet, busco transformar desafíos complejos en productos digitales seguros, eficientes y centrados en el usuario.</p>
+            </article>
+            <article class="panel-card">
+              <p class="panel-title">me-online</p>
+              <div class="mt-4 space-y-2 text-sm">
+                <a href="https://www.linkedin.com/in/massiel-perozo-5b30b4304/" target="_blank" rel="noopener noreferrer" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">linkedin</a>
+                <a href="https://github.com/massiperozo" target="_blank" rel="noopener noreferrer" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">github</a>
+                <a href="mailto:massiperozob@gmail.com" class="block text-[#A1A1AA] hover:text-[#8B5CF6]">email</a>
+              </div>
+            </article>
+          </div>
+          <div class="flex flex-col gap-3">
+            <article class="panel-card">
+              <p class="panel-title">where-i-work</p>
+              <p class="mt-4 text-sm text-[#A1A1AA]">Actualmente en Venezuela.</p>
+              <p class="mt-2 text-sm text-[#A1A1AA]">Disponible para colaboraciones remotas en Latinoamerica y worldwide.</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">Ayudo a empresas y equipos tecnológicos a construir productos digitales que no solo son funcionales y estéticamente atractivos, sino también seguros y escalables desde el primer día. Como estudiante de Ingeniería Informática y mentora de código, aplico una mentalidad analítica para resolver problemas complejos, integrando mi experiencia en marketing digital para asegurar que cada solución técnica esté alineada con los objetivos del usuario y del negocio.</p>
+            </article>
+            <article class="panel-card panel-card-purple relative overflow-hidden">
+              <p class="panel-title">portrait</p>
+              <div class="mt-5 grid place-items-center rounded-xl border border-black/20 bg-[#8B5CF6] p-5">
+                <img src={massielProfile.src} alt="Retrato de Massiel Perozo" class="h-44 w-full rounded-lg object-cover" loading="lazy" />
+              </div>
+            </article>
+          </div>
+          <div class="flex flex-col gap-3">
+            <article class="panel-card">
+              <p class="panel-title">collaborations</p>
+              <p class="mt-4 text-sm text-[#A1A1AA]">Trabajo con agencias, estudios digitales e iniciativas educativas con impacto.</p>
+            </article>
+            <article class="panel-card">
+              <p class="panel-title">instituciones</p>
+              <div class="mt-4 flex items-center gap-3">
+                <img src={technovationLogo.src} alt="Technovation Girls" class="h-8 w-auto" loading="lazy" />
+                <img src={ucaLogo.src} alt="UCAB" class="h-8 w-auto" loading="lazy" />
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiencia" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
+        <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">Experiencia</h2>
+        <p class="mt-4 text-xs text-[#A1A1AA]">// pasantias y experiencia profesional</p>
+
+        <div class="mt-8 space-y-4">
+          {
+            experiences.map((experience, index) => (
+              <article class="rounded-2xl border border-white/12 bg-[#19191D]/85 p-5 transition hover:-translate-y-1 hover:border-[#8B5CF6]/60">
+                <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                  <div class="flex items-start gap-4">
+                    <div class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-white/12 bg-white/[0.04] text-[#8B5CF6]">
+                      <span class="text-sm font-bold">0{index + 1}</span>
+                    </div>
+                    <div>
+                      <h3 class="text-2xl font-semibold leading-tight text-white">{experience.role}</h3>
+                      <p class="mt-1 text-sm text-white/82">{experience.company}</p>
+                      <p class="mt-1 text-sm text-white/50">{experience.period}</p>
+                    </div>
+                  </div>
+                  <span class="rounded-full border border-[#8B5CF6]/40 bg-[#8B5CF6]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C4B5FD]">
+                    Pasantía
+                  </span>
+                </div>
+                <p class="mt-4 max-w-4xl text-sm leading-relaxed text-[#A1A1AA]">{experience.description}</p>
+                {experience.tags.length > 0 && (
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    {experience.tags.map((tag) => <span class="rounded-full border border-white/15 px-3 py-1 text-[11px] text-white/72">{tag}</span>)}
+                  </div>
+                )}
+              </article>
+            ))
+          }
         </div>
       </section>
 
       <section id="proyectos" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
-        <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8B5CF6]">showcase</p>
-        <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">Projects</h2>
+        <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">Proyectos</h2>
+        <p class="mt-4 text-xs text-[#A1A1AA]">// proyectos mas impactantes</p>
         <div class="mt-8 grid gap-4 md:grid-cols-2">
           {
             projects.map((project, index) => (
@@ -271,26 +340,10 @@ const contacts = [
           }
         </div>
 
-        <div class="mt-8 border-t border-white/12 pt-6">
-          <p class="text-xs text-white/50">// otros proyectos</p>
-          {
-            miniProjects.map((item) => (
-              <div class="mt-3 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3 text-sm">
-                <a href={item.href} class="font-semibold text-white hover:text-[#C4B5FD]">{item.title}</a>
-                <div class="flex flex-wrap items-center gap-2">
-                  {item.tags.map((tag) => <span class="rounded-full border border-[#8B5CF6]/40 px-2 py-0.5 text-[10px] text-[#C4B5FD]">{tag}</span>)}
-                  <span class="text-xs text-white/45">{item.year}</span>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-
         <a href="https://github.com/massiperozo" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/[0.02] px-4 py-2 text-sm text-white/82 hover:border-[#8B5CF6]/50 hover:text-[#C4B5FD]">Ver todos los proyectos en GitHub -&gt;</a>
       </section>
 
       <section id="skills" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
-        <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8B5CF6]">showcase</p>
         <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">Skills & Stack</h2>
         <p class="mt-4 text-xs text-[#A1A1AA]">// stack tecnico para conectar</p>
 
@@ -363,7 +416,7 @@ const contacts = [
     background: rgba(25, 25, 29, 0.85);
     border-radius: 0.9rem;
     padding: 1rem;
-    min-height: 11rem;
+    min-height: auto;
     transition: transform 220ms ease, border-color 220ms ease;
   }
 
