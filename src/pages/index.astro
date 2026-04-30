@@ -116,18 +116,25 @@ const contacts = [
 ---
 
 <Layout>
-  <div class="relative min-h-screen bg-[#0F0F12] text-white">
-    <div class="pointer-events-none fixed inset-0 -z-20 overflow-hidden">
-      <div class="ambient-grid absolute inset-0 opacity-45"></div>
-      <div class="ambient-noise absolute inset-0 opacity-20"></div>
-      <div data-parallax="0.04" class="parallax-orb absolute -left-20 top-0 h-80 w-80 rounded-full bg-[#8B5CF6]/20 blur-[120px]"></div>
-      <div data-parallax="0.08" class="parallax-orb absolute right-[-8rem] top-[20%] h-[28rem] w-[28rem] rounded-full bg-[#8B5CF6]/18 blur-[140px]"></div>
-      <div data-parallax="0.13" class="parallax-orb absolute left-[24%] top-[56%] h-[30rem] w-[30rem] rounded-full bg-[#8B5CF6]/12 blur-[170px]"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_42%_42%,rgba(139,92,246,0.17),transparent_45%)]"></div>
-      <span class="ambient-glyph left-[18%] top-[20%] hidden md:block">&#123; &#125;</span>
-      <span class="ambient-glyph right-[18%] top-[22%] hidden md:block">#</span>
-      <span class="ambient-glyph left-[20%] top-[58%] hidden md:block">//</span>
-      <span class="ambient-glyph right-[20%] top-[60%] hidden md:block">-&gt;</span>
+  <div class="relative min-h-screen bg-transparent text-white">
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div class="hero-mesh absolute inset-0"></div>
+      <div class="ambient-grid absolute inset-0 opacity-32"></div>
+      <div class="ambient-noise absolute inset-0 opacity-18"></div>
+      <div data-parallax="0.03" class="parallax-orb absolute -left-24 top-[-5rem] h-[24rem] w-[24rem] rounded-full bg-[#8B5CF6]/18 blur-[130px]"></div>
+      <div data-parallax="0.07" class="parallax-orb absolute right-[-10rem] top-[16%] h-[32rem] w-[32rem] rounded-full bg-[#C4B5FD]/12 blur-[160px]"></div>
+      <div data-parallax="0.11" class="parallax-orb absolute left-[18%] top-[52%] h-[34rem] w-[34rem] rounded-full bg-[#8B5CF6]/10 blur-[180px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(139,92,246,0.2),transparent_38%),radial-gradient(circle_at_22%_22%,rgba(196,181,253,0.08),transparent_24%),radial-gradient(circle_at_78%_72%,rgba(16,185,129,0.08),transparent_22%)]"></div>
+      <div class="tech-line tech-line-left"></div>
+      <div class="tech-line tech-line-right"></div>
+      <span data-parallax="0.05" class="ambient-glyph ambient-glyph-code left-[14%] top-[18%] hidden md:block">&lt;/&gt;</span>
+      <span data-parallax="0.08" class="ambient-glyph ambient-glyph-code right-[16%] top-[16%] hidden md:block">{ }</span>
+      <span data-parallax="0.12" class="ambient-glyph ambient-glyph-code left-[18%] top-[54%] hidden md:block">&lt;code&gt;</span>
+      <span data-parallax="0.09" class="ambient-glyph ambient-glyph-code right-[19%] top-[58%] hidden md:block">#</span>
+      <span data-parallax="0.13" class="ambient-glyph ambient-glyph-code right-[34%] top-[67%] hidden md:block">console.log()</span>
+      <span data-parallax="0.1" class="ambient-glyph ambient-glyph-code left-[55%] top-[15%] hidden md:block">npm</span>
+      <span data-parallax="0.16" class="ambient-glyph ambient-glyph-code right-[69%] top-[40%] hidden md:block">git</span>
+      <span data-parallax="0.19" class="ambient-glyph ambient-glyph-code left-[72%] top-[32%] hidden md:block">async</span>
     </div>
 
     <aside class="fixed left-0 top-0 z-50 hidden h-screen w-[4.5rem] border-r border-white/10 bg-[#19191D]/90 md:flex md:flex-col md:items-center">
@@ -213,7 +220,7 @@ const contacts = [
       </div>
     </header>
 
-    <main class="md:ml-[4.5rem]">
+    <main class="relative z-10 md:ml-[4.5rem]">
       <section id="inicio" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-center px-5 py-20 text-center md:px-8">
         <h1 class="mt-6 max-w-4xl text-balance text-5xl font-bold leading-[1.07] tracking-tight text-white sm:text-6xl lg:text-7xl">
           Hola, soy Massiel, una

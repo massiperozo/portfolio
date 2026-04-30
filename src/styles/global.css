@@ -34,6 +34,28 @@
   }
 }
 
+@keyframes meshDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(1.5%, -1%, 0) scale(1.04);
+  }
+}
+
+@keyframes lineSweep {
+  0%,
+  100% {
+    opacity: 0.24;
+    transform: translateX(0) rotate(var(--line-rotate));
+  }
+  50% {
+    opacity: 0.45;
+    transform: translateX(2.2rem) rotate(var(--line-rotate));
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -49,9 +71,19 @@
     mask-image: radial-gradient(circle at center, black 38%, transparent 90%);
   }
 
+  .hero-mesh {
+    background:
+      radial-gradient(circle at 50% 34%, rgba(139, 92, 246, 0.42), transparent 18%),
+      radial-gradient(circle at 68% 18%, rgba(196, 181, 253, 0.24), transparent 18%),
+      radial-gradient(circle at 22% 72%, rgba(16, 185, 129, 0.12), transparent 16%),
+      radial-gradient(circle at 82% 78%, rgba(245, 158, 11, 0.08), transparent 14%),
+      linear-gradient(135deg, rgba(6, 8, 14, 0.98), rgba(18, 12, 34, 0.98) 42%, rgba(10, 18, 28, 0.96));
+    animation: meshDrift 16s ease-in-out infinite alternate;
+  }
+
   .ambient-noise {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 0.6px, transparent 0.6px);
-    background-size: 3px 3px;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.14) 0.7px, transparent 0.7px);
+    background-size: 4px 4px;
     mix-blend-mode: soft-light;
   }
 
@@ -68,6 +100,44 @@
     animation: floatGlyph 8s ease-in-out infinite;
   }
 
+  .ambient-glyph-code {
+    text-transform: uppercase;
+    text-shadow: 0 0 22px rgba(139, 92, 246, 0.18);
+  }
+
+  .tech-line {
+    position: absolute;
+    left: 50%;
+    width: min(42rem, 72vw);
+    height: 1px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.82), rgba(196, 181, 253, 0.28), transparent);
+    filter: blur(0.15px);
+    animation: lineSweep 12s ease-in-out infinite;
+  }
+
+  .tech-line::after {
+    content: '';
+    position: absolute;
+    inset: -1px 18%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    opacity: 0.72;
+  }
+
+  .tech-line-left {
+    top: 31%;
+    --line-rotate: -14deg;
+    transform: translateX(-50%) rotate(var(--line-rotate));
+  }
+
+  .tech-line-right {
+    top: 62%;
+    --line-rotate: 12deg;
+    transform: translateX(-50%) rotate(var(--line-rotate));
+    animation-delay: -6s;
+  }
+
   .reveal-up {
     opacity: 0;
     transform: translateY(28px);
@@ -81,7 +151,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-mesh,
   .ambient-glyph {
+    animation: none;
+  }
+
+  .tech-line {
     animation: none;
   }
 
