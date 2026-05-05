@@ -5,24 +5,24 @@ import ibmLogo from '../assets/ibm.svg';
 import fortinetLogo from '../assets/Fortinet_logo.svg';
 import ucaLogo from '../assets/imagen ucab - portafolio.png';
 import technovationLogo from '../assets/TechnovationGirls-portafolio.png';
+// CV moved to public/ - link directly to the public path below
 
 const topNav = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Sobre Mi', href: '#sobre-mi' },
-  { label: 'Experiencia', href: '#experiencia' },
-  
-  { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contacto', href: '#contacto' },
+  { key: 'home', label: 'Inicio', href: '#inicio' },
+  { key: 'about', label: 'Sobre Mi', href: '#sobre-mi' },
+  { key: 'experience', label: 'Experiencia', href: '#experiencia' },
+  { key: 'projects', label: 'Proyectos', href: '#proyectos' },
+  { key: 'skills', label: 'Skills', href: '#skills' },
+  { key: 'contact', label: 'Contacto', href: '#contacto' },
 ];
 
 const sideNav = [
-  { label: 'Inicio', href: '#inicio', icon: 'home' },
-  { label: 'Sobre Mi', href: '#sobre-mi', icon: 'user' },
-  { label: 'Experiencia', href: '#experiencia', icon: 'experience' },
-  { label: 'Proyectos', href: '#proyectos', icon: 'briefcase' },
-  { label: 'Skills', href: '#skills', icon: 'flask' },
-  { label: 'Contacto', href: '#contacto', icon: 'mail' },
+  { key: 'home', label: 'Inicio', href: '#inicio', icon: 'home' },
+  { key: 'about', label: 'Sobre Mi', href: '#sobre-mi', icon: 'user' },
+  { key: 'experience', label: 'Experiencia', href: '#experiencia', icon: 'experience' },
+  { key: 'projects', label: 'Proyectos', href: '#proyectos', icon: 'briefcase' },
+  { key: 'skills', label: 'Skills', href: '#skills', icon: 'flask' },
+  { key: 'contact', label: 'Contacto', href: '#contacto', icon: 'mail' },
 ];
 
 const experiences = [
@@ -146,6 +146,7 @@ const contacts = [
             <a
               href={item.href}
               data-nav-link
+              data-i18n-aria={`nav.${item.key}`}
               class="group grid h-9 w-9 place-items-center rounded-lg border border-transparent text-white/50 transition hover:border-white/15 hover:bg-white/[0.04] hover:text-[#8B5CF6]"
               aria-label={item.label}
             >
@@ -192,6 +193,25 @@ const contacts = [
           ))
         }
       </div>
+      <button
+        data-translate-button
+        type="button"
+        class="group relative mt-6 grid h-9 w-9 place-items-center rounded-lg border border-transparent text-white/50 transition hover:border-white/15 hover:bg-white/[0.04] hover:text-[#8B5CF6]"
+        data-i18n-aria="translate.toggleAria"
+        data-i18n-title="translate.tooltip"
+        aria-label="Traducir al ingles"
+        title="Translate to English"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <path d="M4 6h10" />
+          <path d="M9 6c0 4-1.8 7.2-5 9" />
+          <path d="M6 11c1.1 1.7 2.7 3.1 4.8 4.2" />
+          <path d="M14 14h6" />
+          <path d="M17 11l3 9" />
+          <path d="M17 11l-3 9" />
+        </svg>
+        <span data-i18n="translate.tooltip" class="pointer-events-none absolute left-[3rem] hidden w-max rounded-md border border-white/10 bg-[#0F0F12] px-2 py-1 text-[11px] font-medium text-white shadow-lg group-hover:block">Translate to English</span>
+      </button>
       <div class="mb-5 mt-auto h-24 w-[2px] rounded-full bg-white/10">
         <div id="scroll-progress" class="w-full rounded-full bg-[#8B5CF6]" style="height: 8%;"></div>
       </div>
@@ -208,6 +228,7 @@ const contacts = [
                   <a
                     href={item.href}
                     data-nav-link
+                    data-i18n={`nav.${item.key}`}
                     class="transition hover:text-[#8B5CF6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F0F12]"
                   >
                     {item.label}
@@ -217,37 +238,115 @@ const contacts = [
             }
           </ul>
         </nav>
-        <a href="#contacto" class="rounded-full border border-[#8B5CF6]/40 bg-[#8B5CF6]/10 px-4 py-2 text-xs font-semibold tracking-wide text-[#C4B5FD] transition hover:border-[#8B5CF6] hover:bg-[#8B5CF6]/15 md:hidden">Contacto</a>
+        <div class="flex items-center gap-2 md:hidden">
+          <button
+            data-translate-button
+            type="button"
+            class="grid h-9 w-9 place-items-center rounded-full border border-[#8B5CF6]/40 bg-[#8B5CF6]/10 text-[#C4B5FD] transition hover:border-[#8B5CF6] hover:bg-[#8B5CF6]/15"
+            data-i18n-aria="translate.toggleAria"
+            data-i18n-title="translate.tooltip"
+            aria-label="Traducir al ingles"
+            title="Translate to English"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <path d="M4 6h10" />
+              <path d="M9 6c0 4-1.8 7.2-5 9" />
+              <path d="M6 11c1.1 1.7 2.7 3.1 4.8 4.2" />
+              <path d="M14 14h6" />
+              <path d="M17 11l3 9" />
+              <path d="M17 11l-3 9" />
+            </svg>
+          </button>
+          <div class="inline-flex rounded-full border border-white/15 bg-white/[0.03] p-1">
+            <button data-lang-switch="es" type="button" class="rounded-full px-2 py-1 text-[11px] font-semibold text-white/70 transition" aria-label="Cambiar a espanol">ES</button>
+            <button data-lang-switch="en" type="button" class="rounded-full px-2 py-1 text-[11px] font-semibold text-white/70 transition" aria-label="Switch to English">EN</button>
+          </div>
+          <a href="#contacto" data-i18n="nav.contact" class="rounded-full border border-[#8B5CF6]/40 bg-[#8B5CF6]/10 px-4 py-2 text-xs font-semibold tracking-wide text-[#C4B5FD] transition hover:border-[#8B5CF6] hover:bg-[#8B5CF6]/15">Contacto</a>
+        </div>
+        <div class="hidden items-center gap-2 md:flex">
+          <div class="inline-flex rounded-full border border-white/15 bg-white/[0.03] p-1">
+            <button data-lang-switch="es" type="button" class="rounded-full px-2 py-1 text-[11px] font-semibold text-white/70 transition" aria-label="Cambiar a espanol">ES</button>
+            <button data-lang-switch="en" type="button" class="rounded-full px-2 py-1 text-[11px] font-semibold text-white/70 transition" aria-label="Switch to English">EN</button>
+          </div>
+        </div>
       </div>
     </header>
 
-    <main class="relative z-10 md:ml-[4.5rem]">
-      <section id="inicio" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-center px-5 py-20 text-center md:px-8">
-        <h1 class="mt-6 max-w-4xl text-balance text-5xl font-bold leading-[1.07] tracking-tight text-white sm:text-6xl lg:text-7xl">
-          Hola, soy Massiel, una
-          <span class="bg-gradient-to-r from-[#8B5CF6] to-[#C4B5FD] bg-clip-text text-transparent">desarrolladora autodidacta y creativa</span>
+    <nav class="fixed bottom-4 left-1/2 z-40 flex w-[calc(100%-1.5rem)] max-w-sm -translate-x-1/2 items-center justify-between rounded-2xl border border-white/15 bg-[#0F0F12]/88 px-3 py-2 backdrop-blur-xl md:hidden" data-i18n-aria="mobileNav.ariaLabel" aria-label="Navegacion movil">
+      <a href="#inicio" data-nav-link data-i18n-aria="nav.home" class="grid h-9 w-9 place-items-center rounded-lg text-white/65 transition hover:text-[#8B5CF6]" aria-label="Inicio">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <path d="M3 11.5L12 4l9 7.5" />
+          <path d="M5 10.5V20h14v-9.5" />
+        </svg>
+      </a>
+      <a href="#sobre-mi" data-nav-link data-i18n-aria="nav.about" class="grid h-9 w-9 place-items-center rounded-lg text-white/65 transition hover:text-[#8B5CF6]" aria-label="Sobre mi">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.5" />
+          <path d="M4.5 20c1.8-3.3 4.3-5 7.5-5s5.7 1.7 7.5 5" />
+        </svg>
+      </a>
+      <a href="#proyectos" data-nav-link data-i18n-aria="nav.projects" class="grid h-9 w-9 place-items-center rounded-lg text-white/65 transition hover:text-[#8B5CF6]" aria-label="Proyectos">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <rect x="3" y="7" width="18" height="13" rx="2" />
+          <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" />
+        </svg>
+      </a>
+      <a href="#contacto" data-nav-link data-i18n-aria="nav.contact" class="grid h-9 w-9 place-items-center rounded-lg text-white/65 transition hover:text-[#8B5CF6]" aria-label="Contacto">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="M3 7l9 6 9-6" />
+        </svg>
+      </a>
+      <button
+        data-translate-button
+        type="button"
+        class="grid h-9 w-9 place-items-center rounded-lg text-white/65 transition hover:text-[#8B5CF6]"
+        data-i18n-aria="translate.toggleAria"
+        data-i18n-title="translate.tooltip"
+        aria-label="Traducir al ingles"
+        title="Translate to English"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <path d="M4 6h10" />
+          <path d="M9 6c0 4-1.8 7.2-5 9" />
+          <path d="M6 11c1.1 1.7 2.7 3.1 4.8 4.2" />
+          <path d="M14 14h6" />
+          <path d="M17 11l3 9" />
+          <path d="M17 11l-3 9" />
+        </svg>
+      </button>
+    </nav>
+
+    <main class="relative z-10 pb-24 md:ml-[4.5rem] md:pb-0">
+      <section id="inicio" data-section data-reveal class="reveal-up mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col items-center justify-center px-5 py-20 text-center md:min-h-screen md:px-8">
+        <h1 class="mt-6 max-w-4xl text-balance text-4xl font-bold leading-[1.07] tracking-tight text-white sm:text-5xl lg:text-7xl">
+          <span data-i18n="hero.titlePrefix">Hola, soy Massiel, una</span>
+          <span data-i18n="hero.titleHighlight" class="bg-gradient-to-r from-[#8B5CF6] to-[#C4B5FD] bg-clip-text text-transparent">desarrolladora autodidacta y creativa</span>
         </h1>
-        <p class="mt-7 max-w-3xl text-lg leading-relaxed text-[#A1A1AA]">
+        <p data-i18n="hero.description" class="mt-7 max-w-3xl text-lg leading-relaxed text-[#A1A1AA]">
           Transformo desafios complejos en productos digitales seguros, eficientes y centrados en el usuario,
           fusionando visión técnica con creatividad y estética.
         </p>
         <div class="mt-11 flex flex-wrap items-center justify-center gap-7 text-xs text-[#A1A1AA]">
-          <span id="local-time">Venezuela - Hora local <span id="local-time-value">--:--</span></span>
+          <span id="local-time"><span data-i18n="hero.localTimeLabel">Venezuela - Hora local</span> <span id="local-time-value">--:--</span></span>
           <a href="https://www.linkedin.com/in/massiel-perozo-5b30b4304/" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B5CF6]">LinkedIn</a>
           <a href="https://github.com/massiperozo" target="_blank" rel="noopener noreferrer" class="hover:text-[#8B5CF6]">GitHub</a>
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=massiperozob@gmail.com" class="hover:text-[#8B5CF6]">Email</a>
         </div>
-        <a href="#contacto" class="mt-12 inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/35 bg-[#8B5CF6]/15 px-5 py-2 text-sm font-semibold text-[#C4B5FD] transition hover:translate-y-[-1px] hover:bg-[#8B5CF6]/25">trabajemos juntos<span aria-hidden="true">-&gt;</span></a>
+        <div class="mt-12 flex flex-wrap items-center justify-center gap-3">
+          <a href="#contacto" data-i18n="hero.cta" class="inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/35 bg-[#8B5CF6]/15 px-5 py-2 text-sm font-semibold text-[#C4B5FD] transition hover:translate-y-[-1px] hover:bg-[#8B5CF6]/25">trabajemos juntos<span aria-hidden="true">-&gt;</span></a>
+          <a href="/Currículum%20Vitae-Massiel%20Perozo.pdf" target="_blank" rel="noopener noreferrer" data-i18n="hero.cvButton" class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.03] px-5 py-2 text-sm font-semibold text-white/90 transition hover:-translate-y-[1px] hover:border-[#8B5CF6]/55 hover:text-[#C4B5FD]">Ver CV<span aria-hidden="true">-&gt;</span></a>
+        </div>
       </section>
 
-      <section id="sobre-mi" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
-        <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">Sobre mi</h2>
+      <section id="sobre-mi" data-section data-reveal class="reveal-up mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-center px-5 py-16 md:min-h-screen md:px-8">
+        <h2 data-i18n="about.title" class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Sobre mi</h2>
         <div class="mt-8 grid gap-3 md:grid-cols-3">
           <div class="flex flex-col gap-3">
             <article class="panel-card">
               <p class="panel-title">about-me</p>
-              <p class="mt-4 text-sm leading-relaxed text-[#A1A1AA]">Ingeniera Informática en formación con un enfoque apasionado en el Desarrollo Fullstack y la Ciberseguridad. Mi valor diferencial radica en la intersección entre la robustez técnica y la visión estratégica de marketing.</p>
-              <p class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">Con experiencia en la creación de soluciones escalables en Python y JavaScript, y certificaciones internacionales por IBM y Fortinet, busco transformar desafíos complejos en productos digitales seguros, eficientes y centrados en el usuario.</p>
+              <p data-i18n="about.bio1" class="mt-4 text-sm leading-relaxed text-[#A1A1AA]">Ingeniera Informática en formación con un enfoque apasionado en el Desarrollo Fullstack y la Ciberseguridad. Mi valor diferencial radica en la intersección entre la robustez técnica y la visión estratégica de marketing.</p>
+              <p data-i18n="about.bio2" class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">Con experiencia en la creación de soluciones escalables en Python y JavaScript, y certificaciones internacionales por IBM y Fortinet, busco transformar desafíos complejos en productos digitales seguros, eficientes y centrados en el usuario.</p>
             </article>
             <article class="panel-card">
               <p class="panel-title">me-online</p>
@@ -261,15 +360,15 @@ const contacts = [
           <div class="flex flex-col gap-3">
             <article class="panel-card">
               <p class="panel-title">where-i-work</p>
-              <p class="mt-4 text-sm text-[#A1A1AA]">Actualmente en Venezuela.</p>
-              <p class="mt-2 text-sm text-[#A1A1AA]">Disponible para colaboraciones remotas en Latinoamerica y worldwide.</p>
-              <p class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">Ayudo a empresas y equipos tecnológicos a construir productos digitales que no solo son funcionales y estéticamente atractivos, sino también seguros y escalables desde el primer día. Como estudiante de Ingeniería Informática y mentora de código, aplico una mentalidad analítica para resolver problemas complejos, integrando mi experiencia en marketing digital para asegurar que cada solución técnica esté alineada con los objetivos del usuario y del negocio.</p>
+              <p data-i18n="about.location" class="mt-4 text-sm text-[#A1A1AA]">Actualmente en Venezuela.</p>
+              <p data-i18n="about.remote" class="mt-2 text-sm text-[#A1A1AA]">Disponible para colaboraciones remotas en Latinoamerica y worldwide.</p>
+              <p data-i18n="about.bio3" class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">Ayudo a empresas y equipos tecnológicos a construir productos digitales que no solo son funcionales y estéticamente atractivos, sino también seguros y escalables desde el primer día. Como estudiante de Ingeniería Informática y mentora de código, aplico una mentalidad analítica para resolver problemas complejos, integrando mi experiencia en marketing digital para asegurar que cada solución técnica esté alineada con los objetivos del usuario y del negocio.</p>
             </article>
           </div>
           <div class="flex flex-col gap-3">
             <article class="panel-card">
               <p class="panel-title">collaborations</p>
-              <p class="mt-4 text-sm text-[#A1A1AA]">Trabajo con agencias, estudios digitales e iniciativas educativas con impacto.</p>
+              <p data-i18n="about.collaborations" class="mt-4 text-sm text-[#A1A1AA]">Trabajo con agencias, estudios digitales e iniciativas educativas con impacto.</p>
             </article>
             <article class="panel-card">
               <p class="panel-title">instituciones</p>
@@ -288,9 +387,9 @@ const contacts = [
         </div>
       </section>
 
-      <section id="experiencia" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
-        <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">Experiencia</h2>
-        <p class="mt-4 text-xs text-[#A1A1AA]">// pasantias y experiencia profesional</p>
+      <section id="experiencia" data-section data-reveal class="reveal-up mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-center px-5 py-16 md:min-h-screen md:px-8">
+        <h2 data-i18n="experience.title" class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Experiencia</h2>
+        <p data-i18n="experience.subtitle" class="mt-4 text-xs text-[#A1A1AA]">// pasantias y experiencia profesional</p>
 
         <div class="mt-8 space-y-4">
           {
@@ -302,19 +401,19 @@ const contacts = [
                       <span class="text-sm font-bold">0{index + 1}</span>
                     </div>
                     <div>
-                      <h3 class="text-2xl font-semibold leading-tight text-white">{experience.role}</h3>
-                      <p class="mt-1 text-sm text-white/82">{experience.company}</p>
-                      <p class="mt-1 text-sm text-white/50">{experience.period}</p>
+                      <h3 data-i18n={`experience.${index}.role`} class="text-2xl font-semibold leading-tight text-white">{experience.role}</h3>
+                      <p data-i18n={`experience.${index}.company`} class="mt-1 text-sm text-white/82">{experience.company}</p>
+                      <p data-i18n={`experience.${index}.period`} class="mt-1 text-sm text-white/50">{experience.period}</p>
                     </div>
                   </div>
-                  <span class="rounded-full border border-[#8B5CF6]/40 bg-[#8B5CF6]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C4B5FD]">
+                  <span data-i18n="experience.badge" class="rounded-full border border-[#8B5CF6]/40 bg-[#8B5CF6]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C4B5FD]">
                     Pasantía
                   </span>
                 </div>
-                <p class="mt-4 max-w-4xl text-sm leading-relaxed text-[#A1A1AA]">{experience.description}</p>
+                <p data-i18n={`experience.${index}.description`} class="mt-4 max-w-4xl text-sm leading-relaxed text-[#A1A1AA]">{experience.description}</p>
                 {experience.tags.length > 0 && (
                   <div class="mt-4 flex flex-wrap gap-2">
-                    {experience.tags.map((tag) => <span class="rounded-full border border-white/15 px-3 py-1 text-[11px] text-white/72">{tag}</span>)}
+                    {experience.tags.map((tag, tagIndex) => <span data-i18n={`experience.${index}.tags.${tagIndex}`} class="rounded-full border border-white/15 px-3 py-1 text-[11px] text-white/72">{tag}</span>)}
                   </div>
                 )}
               </article>
@@ -323,9 +422,9 @@ const contacts = [
         </div>
       </section>
 
-      <section id="proyectos" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
-        <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">Proyectos</h2>
-        <p class="mt-4 text-xs text-[#A1A1AA]">// proyectos mas impactantes</p>
+      <section id="proyectos" data-section data-reveal class="reveal-up mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-center px-5 py-16 md:min-h-screen md:px-8">
+        <h2 data-i18n="projects.title" class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Proyectos</h2>
+        <p data-i18n="projects.subtitle" class="mt-4 text-xs text-[#A1A1AA]">// proyectos mas impactantes</p>
         <div class="mt-8 grid gap-4 md:grid-cols-2">
           {
             projects.map((project, index) => (
@@ -334,34 +433,34 @@ const contacts = [
                   <span>0{index + 1}</span>
                   <span>{project.year}</span>
                 </div>
-                <h3 class="mt-3 text-3xl font-semibold leading-tight text-white">{project.title}</h3>
-                <p class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">{project.description}</p>
+                <h3 data-i18n={`projects.${index}.title`} class="mt-3 text-3xl font-semibold leading-tight text-white">{project.title}</h3>
+                <p data-i18n={`projects.${index}.description`} class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">{project.description}</p>
                 <div class="mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => <span class="rounded-full border border-[#8B5CF6]/45 px-2 py-1 text-[11px] text-[#C4B5FD]">{tag}</span>)}
                 </div>
                 <div class="mt-6 flex items-center justify-between">
-                  <span class="text-sm text-white/58">ver más</span>
-                  <a href={project.href} target="_blank" rel="noopener noreferrer" class="rounded-lg bg-[#8B5CF6] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#C4B5FD] hover:text-[#0F0F12]">Ver proyecto -&gt;</a>
+                  <span data-i18n="projects.moreLabel" class="text-sm text-white/58">ver más</span>
+                  <a href={project.href} target="_blank" rel="noopener noreferrer" data-i18n="projects.viewProject" class="rounded-lg bg-[#8B5CF6] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#C4B5FD] hover:text-[#0F0F12]">Ver proyecto -&gt;</a>
                 </div>
               </article>
             ))
           }
         </div>
 
-        <a href="https://github.com/massiperozo" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/[0.02] px-4 py-2 text-sm text-white/82 hover:border-[#8B5CF6]/50 hover:text-[#C4B5FD]">Ver todos los proyectos en GitHub -&gt;</a>
+        <a href="https://github.com/massiperozo" target="_blank" rel="noopener noreferrer" data-i18n="projects.viewAll" class="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/[0.02] px-4 py-2 text-sm text-white/82 hover:border-[#8B5CF6]/50 hover:text-[#C4B5FD]">Ver todos los proyectos en GitHub -&gt;</a>
       </section>
 
-      <section id="skills" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
-        <h2 class="mt-2 text-4xl font-bold tracking-tight text-white">Skills & Stack</h2>
-        <p class="mt-4 text-xs text-[#A1A1AA]">// stack técnico para conectar</p>
+      <section id="skills" data-section data-reveal class="reveal-up mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-center px-5 py-16 md:min-h-screen md:px-8">
+        <h2 data-i18n="skills.title" class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Skills & Stack</h2>
+        <p data-i18n="skills.subtitle" class="mt-4 text-xs text-[#A1A1AA]">// stack técnico para conectar</p>
 
         <div class="mt-6 max-w-xl rounded-lg border border-white/15 bg-[#19191D] p-4 font-mono text-xs text-[#C4B5FD]">
-          <p>&gt; Iniciando perfil...</p>
+          <p data-i18n="skills.console.start">&gt; Iniciando perfil...</p>
           <p class="mt-2 text-white">Massiel Perozo</p>
-          <p>Ingeniera Informatica | UCAB</p>
-          <p class="mt-2">- Desarrollo Fullstack (JS/TS, Python)</p>
-          <p>- Ciberseguridad (IBM, Fortinet)</p>
-          <p>- Estrategia digital y producto</p>
+          <p data-i18n="skills.console.role">Ingeniera Informatica | UCAB</p>
+          <p data-i18n="skills.console.line1" class="mt-2">- Desarrollo Fullstack (JS/TS, Python)</p>
+          <p data-i18n="skills.console.line2">- Ciberseguridad (IBM, Fortinet)</p>
+          <p data-i18n="skills.console.line3">- Estrategia digital y producto</p>
           <div class="mt-3 flex items-center gap-2">
             <img src={ibmLogo.src} alt="IBM" class="h-5 w-auto" loading="lazy" />
             <img src={fortinetLogo.src} alt="Fortinet" class="h-5 w-auto" loading="lazy" />
@@ -370,31 +469,31 @@ const contacts = [
 
         <div class="mt-8 grid gap-4 md:grid-cols-6">
           {
-            skillCards.map((card) => (
+            skillCards.map((card, index) => (
               <article class={`panel-card ${card.emphasis ? 'md:col-span-3 ring-1 ring-[#8B5CF6]/40' : 'md:col-span-2'}`}>
-                <h3 class="text-lg font-semibold text-white">{card.title}</h3>
-                <p class="mt-1 text-xs uppercase tracking-[0.18em] text-[#C4B5FD]">{card.subtitle}</p>
-                <p class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">{card.description}</p>
+                <h3 data-i18n={`skills.${index}.title`} class="text-lg font-semibold text-white">{card.title}</h3>
+                <p data-i18n={`skills.${index}.subtitle`} class="mt-1 text-xs uppercase tracking-[0.18em] text-[#C4B5FD]">{card.subtitle}</p>
+                <p data-i18n={`skills.${index}.description`} class="mt-3 text-sm leading-relaxed text-[#A1A1AA]">{card.description}</p>
                 <div class="mt-3 flex flex-wrap gap-2">
-                  {card.tags.map((tag) => <span class="rounded border border-white/15 px-1.5 py-0.5 text-[10px] text-white/70">{tag}</span>)}
+                  {card.tags.map((tag, tagIndex) => <span data-i18n={`skills.${index}.tags.${tagIndex}`} class="rounded border border-white/15 px-1.5 py-0.5 text-[10px] text-white/70">{tag}</span>)}
                 </div>
               </article>
             ))
           }
         </div>
 
-        <div class="mt-8 flex items-center justify-between rounded-xl border border-white/12 bg-[#19191D] px-4 py-3 text-sm text-[#A1A1AA]">
-          <span>Buscas una desarrolladora que entienda tanto el codigo como el producto?</span>
-          <a href="#contacto" class="rounded bg-[#8B5CF6] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#C4B5FD] hover:text-[#0F0F12]">Hablemos -&gt;</a>
+        <div class="mt-8 flex flex-col gap-3 rounded-xl border border-white/12 bg-[#19191D] px-4 py-3 text-sm text-[#A1A1AA] sm:flex-row sm:items-center sm:justify-between">
+          <span data-i18n="skills.ctaText">Buscas una desarrolladora que entienda tanto el codigo como el producto?</span>
+          <a href="#contacto" data-i18n="skills.ctaButton" class="rounded bg-[#8B5CF6] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#C4B5FD] hover:text-[#0F0F12]">Hablemos -&gt;</a>
         </div>
       </section>
 
-      <section id="contacto" data-section data-reveal class="reveal-up mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-16 md:px-8">
+      <section id="contacto" data-section data-reveal class="reveal-up mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-center px-5 py-16 md:min-h-screen md:px-8">
         <p class="text-center text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8B5CF6]">contact</p>
-        <h2 class="mt-3 text-center text-balance text-5xl font-bold leading-tight text-white sm:text-6xl">
-          Trabajemos <span class="text-[#8B5CF6]">juntos</span>
+        <h2 class="mt-3 text-center text-balance text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
+          <span data-i18n="contact.titlePrefix">Trabajemos</span> <span data-i18n="contact.titleHighlight" class="text-[#8B5CF6]">juntos</span>
         </h2>
-        <p class="mx-auto mt-5 max-w-3xl text-center text-xl text-[#A1A1AA]">Tienes un proyecto en mente que necesite una visión técnica y estrategica? Hablemos y hagamoslo realidad.</p>
+        <p data-i18n="contact.description" class="mx-auto mt-5 max-w-3xl text-center text-xl text-[#A1A1AA]">Tienes un proyecto en mente que necesite una visión técnica y estrategica? Hablemos y hagamoslo realidad.</p>
 
         <div class="mx-auto mt-10 grid w-full max-w-4xl gap-4 md:grid-cols-3">
           {
@@ -408,13 +507,13 @@ const contacts = [
         </div>
 
         <div class="mx-auto mt-10 flex w-full max-w-2xl flex-col items-stretch justify-center gap-4 sm:flex-row">
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=massiperozob@gmail.com" class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#8B5CF6] px-8 py-4 text-sm font-semibold text-white transition hover:bg-[#C4B5FD] hover:text-[#0F0F12]">Enviar correo <span aria-hidden="true">-&gt;</span></a>
-          <a href="https://wa.me/qr/QC2SZ7YFVA2YB1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#8B5CF6] px-8 py-4 text-sm font-semibold text-white transition hover:bg-[#C4B5FD] hover:text-[#0F0F12]">Enviar WhatsApp <span aria-hidden="true">-&gt;</span></a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=massiperozob@gmail.com" data-i18n="contact.sendMail" class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#8B5CF6] px-8 py-4 text-sm font-semibold text-white transition hover:bg-[#C4B5FD] hover:text-[#0F0F12]">Enviar correo <span aria-hidden="true">-&gt;</span></a>
+          <a href="https://wa.me/qr/QC2SZ7YFVA2YB1" target="_blank" rel="noopener noreferrer" data-i18n="contact.sendWhatsApp" class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#8B5CF6] px-8 py-4 text-sm font-semibold text-white transition hover:bg-[#C4B5FD] hover:text-[#0F0F12]">Enviar WhatsApp <span aria-hidden="true">-&gt;</span></a>
         </div>
 
         <div class="mt-16 border-t border-white/10 pt-6 text-sm text-[#A1A1AA] md:flex md:items-center md:justify-between">
           <p><span class="font-semibold text-white">massiel</span><span class="text-[#8B5CF6]">perozo</span> © 2024</p>
-          <p class="mt-2 md:mt-0">Listo para fortalecer tu presencia digital? Contactame directamente.</p>
+          <p data-i18n="contact.footer" class="mt-2 md:mt-0">Listo para fortalecer tu presencia digital? Contactame directamente.</p>
         </div>
       </section>
     </main>
@@ -449,7 +548,269 @@ const contacts = [
 </style>
 
 <script>
+  type Language = 'es' | 'en';
+
+  const translations: Record<Language, Record<string, string>> = {
+    es: {
+      'nav.home': 'Inicio',
+      'nav.about': 'Sobre Mi',
+      'nav.experience': 'Experiencia',
+      'nav.projects': 'Proyectos',
+      'nav.skills': 'Skills',
+      'nav.contact': 'Contacto',
+      'mobileNav.ariaLabel': 'Navegacion movil',
+      'translate.tooltip': 'Translate to English',
+      'translate.toggleAria': 'Traducir al ingles',
+      'hero.titlePrefix': 'Hola, soy Massiel, una',
+      'hero.titleHighlight': 'desarrolladora autodidacta y creativa',
+      'hero.description': 'Transformo desafios complejos en productos digitales seguros, eficientes y centrados en el usuario, fusionando vision tecnica con creatividad y estetica.',
+      'hero.localTimeLabel': 'Venezuela - Hora local',
+      'hero.cta': 'trabajemos juntos ->',
+      'hero.cvButton': 'Ver CV ->',
+      'about.title': 'Sobre mi',
+      'about.bio1': 'Ingeniera Informatica en formacion con un enfoque apasionado en el Desarrollo Fullstack y la Ciberseguridad. Mi valor diferencial radica en la interseccion entre la robustez tecnica y la vision estrategica de marketing.',
+      'about.bio2': 'Con experiencia en la creacion de soluciones escalables en Python y JavaScript, y certificaciones internacionales por IBM y Fortinet, busco transformar desafios complejos en productos digitales seguros, eficientes y centrados en el usuario.',
+      'about.location': 'Actualmente en Venezuela.',
+      'about.remote': 'Disponible para colaboraciones remotas en Latinoamerica y worldwide.',
+      'about.bio3': 'Ayudo a empresas y equipos tecnologicos a construir productos digitales que no solo son funcionales y esteticamente atractivos, sino tambien seguros y escalables desde el primer dia. Como estudiante de Ingenieria Informatica y mentora de codigo, aplico una mentalidad analitica para resolver problemas complejos, integrando mi experiencia en marketing digital para asegurar que cada solucion tecnica este alineada con los objetivos del usuario y del negocio.',
+      'about.collaborations': 'Trabajo con agencias, estudios digitales e iniciativas educativas con impacto.',
+      'experience.title': 'Experiencia',
+      'experience.subtitle': '// pasantias y experiencia profesional',
+      'experience.badge': 'Pasantia',
+      'experience.0.role': 'Pasante de desarrollo',
+      'experience.0.company': 'Laboratorio de Innovacion Digital',
+      'experience.0.period': 'feb. 2026 - actualidad · 3 meses',
+      'experience.0.description': 'Desarrollo de una herramienta de medicion cultural para las empresas. Dicha herramienta permite apoyar a distintas empresas con su evolucion y mejora con el apoyo de nuevas herramientas e Inteligencia Artificial.',
+      'experience.1.role': 'Pasante de desarrollo',
+      'experience.1.company': 'Uptek Solutions · Contrato de formacion',
+      'experience.1.period': 'feb. 2026 - abr. 2026 · 3 meses',
+      'experience.1.description': 'Desarrollo de un Sistema Centralizado de Notificaciones, para el envio de notificaciones a distintas plataformas con distintas plantillas.',
+      'experience.1.tags.0': 'Kubernetes',
+      'experience.1.tags.1': 'Gestion de eventos',
+      'experience.1.tags.2': '1 aptitud mas',
+      'experience.2.role': 'Mentora de codigo',
+      'experience.2.company': 'Technovation Girls Venezuela',
+      'experience.2.period': '2025',
+      'experience.2.description': 'Mentoria de codigo para diversos grupos de ninas, con la oportunidad de conectar con ninas jovenes e inspirarlas a entrar al mundo de la tecnologia.',
+      'experience.2.tags.0': 'Mentorship',
+      'experience.2.tags.1': 'Education',
+      'experience.2.tags.2': 'Community',
+      'projects.title': 'Proyectos',
+      'projects.subtitle': '// proyectos mas impactantes',
+      'projects.0.title': 'Framework de Ciberseguridad',
+      'projects.0.description': 'Desarrollo de herramientas de analisis de vulnerabilidades y buenas practicas de seguridad informatica.',
+      'projects.1.title': 'Telegram Bot Intelligence',
+      'projects.1.description': 'Bot de automatizacion para gestion de redes sociales y atencion al cliente.',
+      'projects.moreLabel': 'ver mas',
+      'projects.viewProject': 'Ver proyecto ->',
+      'projects.viewAll': 'Ver todos los proyectos en GitHub ->',
+      'skills.title': 'Skills & Stack',
+      'skills.subtitle': '// stack tecnico para conectar',
+      'skills.console.start': '> Iniciando perfil...',
+      'skills.console.role': 'Ingeniera Informatica | UCAB',
+      'skills.console.line1': '- Desarrollo Fullstack (JS/TS, Python)',
+      'skills.console.line2': '- Ciberseguridad (IBM, Fortinet)',
+      'skills.console.line3': '- Estrategia digital y producto',
+      'skills.0.title': 'Fullstack Development',
+      'skills.0.subtitle': 'JavaScript & TypeScript',
+      'skills.0.description': 'Desarrollo de aplicaciones web completas con Node.js, Next.js, Express y React.',
+      'skills.0.tags.0': 'TypeScript',
+      'skills.0.tags.1': 'JavaScript',
+      'skills.0.tags.2': 'Node.js',
+      'skills.0.tags.3': 'Next.js',
+      'skills.0.tags.4': 'React',
+      'skills.0.tags.5': 'Python',
+      'skills.1.title': 'Ciberseguridad',
+      'skills.1.subtitle': 'IBM & Fortinet Certified',
+      'skills.1.description': 'Analisis de vulnerabilidades, implementacion de protocolos de seguridad y desarrollo seguro.',
+      'skills.1.tags.0': 'Security',
+      'skills.1.tags.1': 'OWASP',
+      'skills.1.tags.2': 'ISO 27001',
+      'skills.2.title': 'Estrategia Digital',
+      'skills.2.subtitle': 'Product & Growth',
+      'skills.2.description': 'Definicion de producto y mejora continua con enfoque en valor real.',
+      'skills.2.tags.0': 'Product Strategy',
+      'skills.2.tags.1': 'UX/UI',
+      'skills.2.tags.2': 'Growth',
+      'skills.3.title': 'Bases de Datos',
+      'skills.3.subtitle': 'SQL & NoSQL',
+      'skills.3.description': 'Modelado y optimizacion de consultas para aplicaciones en produccion.',
+      'skills.3.tags.0': 'PostgreSQL',
+      'skills.3.tags.1': 'MongoDB',
+      'skills.3.tags.2': 'MySQL',
+      'skills.4.title': 'DevOps & Tools',
+      'skills.4.subtitle': 'CI/CD & Cloud',
+      'skills.4.description': 'Automatizacion de flujo de trabajo, calidad y despliegues continuos.',
+      'skills.4.tags.0': 'Git',
+      'skills.4.tags.1': 'Docker',
+      'skills.4.tags.2': 'Linux',
+      'skills.5.title': 'Idiomas',
+      'skills.5.subtitle': 'Comunicacion Global',
+      'skills.5.description': 'Colaboracion efectiva en entornos tecnicos multiculturales.',
+      'skills.5.tags.0': 'Espanol Nativo',
+      'skills.5.tags.1': 'Ingles B2',
+      'skills.ctaText': 'Buscas una desarrolladora que entienda tanto el codigo como el producto?',
+      'skills.ctaButton': 'Hablemos ->',
+      'contact.titlePrefix': 'Trabajemos',
+      'contact.titleHighlight': 'juntos',
+      'contact.description': 'Tienes un proyecto en mente que necesite una vision tecnica y estrategica? Hablemos y hagamoslo realidad.',
+      'contact.sendMail': 'Enviar correo ->',
+      'contact.sendWhatsApp': 'Enviar WhatsApp ->',
+      'contact.footer': 'Listo para fortalecer tu presencia digital? Contactame directamente.',
+    },
+    en: {
+      'nav.home': 'Home',
+      'nav.about': 'About Me',
+      'nav.experience': 'Experience',
+      'nav.projects': 'Projects',
+      'nav.skills': 'Skills',
+      'nav.contact': 'Contact',
+      'mobileNav.ariaLabel': 'Mobile navigation',
+      'translate.tooltip': 'Traducir al espanol',
+      'translate.toggleAria': 'Translate to Spanish',
+      'hero.titlePrefix': 'Hi, I am Massiel, a',
+      'hero.titleHighlight': 'self-taught and creative developer',
+      'hero.description': 'I transform complex challenges into secure, efficient, and user-centered digital products, blending technical vision with creativity and aesthetics.',
+      'hero.localTimeLabel': 'Venezuela - Local time',
+      'hero.cta': 'let us work together ->',
+      'hero.cvButton': 'View Resume ->',
+      'about.title': 'About Me',
+      'about.bio1': 'Computer Engineering student with a strong passion for Fullstack Development and Cybersecurity. My differentiator is the intersection of technical robustness and strategic marketing vision.',
+      'about.bio2': 'With experience building scalable solutions in Python and JavaScript, and international certifications from IBM and Fortinet, I focus on turning complex challenges into secure, efficient, and user-centered digital products.',
+      'about.location': 'Currently based in Venezuela.',
+      'about.remote': 'Available for remote collaborations across Latin America and worldwide.',
+      'about.bio3': 'I help companies and tech teams build digital products that are not only functional and visually appealing, but also secure and scalable from day one. As a Computer Engineering student and code mentor, I apply an analytical mindset to solve complex problems, combining my digital marketing background to align each technical solution with user and business goals.',
+      'about.collaborations': 'I collaborate with agencies, digital studios, and educational initiatives with impact.',
+      'experience.title': 'Experience',
+      'experience.subtitle': '// internships and professional experience',
+      'experience.badge': 'Internship',
+      'experience.0.role': 'Development Intern',
+      'experience.0.company': 'Digital Innovation Lab',
+      'experience.0.period': 'Feb 2026 - Present · 3 months',
+      'experience.0.description': 'Developing a cultural measurement tool for companies. This tool supports organizations in their evolution and improvement with new tools and Artificial Intelligence.',
+      'experience.1.role': 'Development Intern',
+      'experience.1.company': 'Uptek Solutions · Training contract',
+      'experience.1.period': 'Feb 2026 - Apr 2026 · 3 months',
+      'experience.1.description': 'Developed a centralized notification system for delivering notifications to multiple platforms with different templates.',
+      'experience.1.tags.0': 'Kubernetes',
+      'experience.1.tags.1': 'Event management',
+      'experience.1.tags.2': '1 more skill',
+      'experience.2.role': 'Code Mentor',
+      'experience.2.company': 'Technovation Girls Venezuela',
+      'experience.2.period': '2025',
+      'experience.2.description': 'Code mentoring for several groups of girls, with the opportunity to connect with young girls and inspire them to join the world of technology.',
+      'experience.2.tags.0': 'Mentorship',
+      'experience.2.tags.1': 'Education',
+      'experience.2.tags.2': 'Community',
+      'projects.title': 'Projects',
+      'projects.subtitle': '// most impactful projects',
+      'projects.0.title': 'Cybersecurity Framework',
+      'projects.0.description': 'Development of tools for vulnerability analysis and cybersecurity best practices.',
+      'projects.1.title': 'Telegram Bot Intelligence',
+      'projects.1.description': 'Automation bot for social media management and customer support.',
+      'projects.moreLabel': 'view more',
+      'projects.viewProject': 'View project ->',
+      'projects.viewAll': 'View all projects on GitHub ->',
+      'skills.title': 'Skills & Stack',
+      'skills.subtitle': '// technical stack to connect',
+      'skills.console.start': '> Booting profile...',
+      'skills.console.role': 'Computer Engineering | UCAB',
+      'skills.console.line1': '- Fullstack Development (JS/TS, Python)',
+      'skills.console.line2': '- Cybersecurity (IBM, Fortinet)',
+      'skills.console.line3': '- Digital strategy and product',
+      'skills.0.title': 'Fullstack Development',
+      'skills.0.subtitle': 'JavaScript & TypeScript',
+      'skills.0.description': 'Building complete web applications with Node.js, Next.js, Express, and React.',
+      'skills.0.tags.0': 'TypeScript',
+      'skills.0.tags.1': 'JavaScript',
+      'skills.0.tags.2': 'Node.js',
+      'skills.0.tags.3': 'Next.js',
+      'skills.0.tags.4': 'React',
+      'skills.0.tags.5': 'Python',
+      'skills.1.title': 'Cybersecurity',
+      'skills.1.subtitle': 'IBM & Fortinet Certified',
+      'skills.1.description': 'Vulnerability analysis, security protocol implementation, and secure development.',
+      'skills.1.tags.0': 'Security',
+      'skills.1.tags.1': 'OWASP',
+      'skills.1.tags.2': 'ISO 27001',
+      'skills.2.title': 'Digital Strategy',
+      'skills.2.subtitle': 'Product & Growth',
+      'skills.2.description': 'Product definition and continuous improvement focused on real value.',
+      'skills.2.tags.0': 'Product Strategy',
+      'skills.2.tags.1': 'UX/UI',
+      'skills.2.tags.2': 'Growth',
+      'skills.3.title': 'Databases',
+      'skills.3.subtitle': 'SQL & NoSQL',
+      'skills.3.description': 'Query modeling and optimization for production applications.',
+      'skills.3.tags.0': 'PostgreSQL',
+      'skills.3.tags.1': 'MongoDB',
+      'skills.3.tags.2': 'MySQL',
+      'skills.4.title': 'DevOps & Tools',
+      'skills.4.subtitle': 'CI/CD & Cloud',
+      'skills.4.description': 'Workflow automation, quality gates, and continuous deployments.',
+      'skills.4.tags.0': 'Git',
+      'skills.4.tags.1': 'Docker',
+      'skills.4.tags.2': 'Linux',
+      'skills.5.title': 'Languages',
+      'skills.5.subtitle': 'Global Communication',
+      'skills.5.description': 'Effective collaboration in multicultural technical environments.',
+      'skills.5.tags.0': 'Native Spanish',
+      'skills.5.tags.1': 'English B2',
+      'skills.ctaText': 'Looking for a developer who understands both code and product?',
+      'skills.ctaButton': 'Let us talk ->',
+      'contact.titlePrefix': 'Let us work',
+      'contact.titleHighlight': 'together',
+      'contact.description': 'Do you have a project that needs technical and strategic vision? Let us talk and make it real.',
+      'contact.sendMail': 'Send email ->',
+      'contact.sendWhatsApp': 'Send WhatsApp ->',
+      'contact.footer': 'Ready to strengthen your digital presence? Contact me directly.',
+    },
+  };
+
+  let currentLanguage: Language = 'es';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const langButtons = document.querySelectorAll<HTMLButtonElement>('[data-lang-switch]');
+
+  function applyTranslations(lang: Language) {
+    const dictionary = translations[lang];
+
+    document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((element) => {
+      const key = element.dataset.i18n;
+      if (!key || !dictionary[key]) return;
+      element.textContent = dictionary[key];
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-i18n-aria]').forEach((element) => {
+      const key = element.dataset.i18nAria;
+      if (!key || !dictionary[key]) return;
+      element.setAttribute('aria-label', dictionary[key]);
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-i18n-title]').forEach((element) => {
+      const key = element.dataset.i18nTitle;
+      if (!key || !dictionary[key]) return;
+      element.setAttribute('title', dictionary[key]);
+    });
+
+    document.documentElement.lang = lang;
+  }
+
+  function updateLanguageButtons(lang: Language) {
+    langButtons.forEach((button) => {
+      const isActive = button.dataset.langSwitch === lang;
+      button.classList.toggle('bg-[#8B5CF6]', isActive);
+      button.classList.toggle('text-white', isActive);
+      button.classList.toggle('text-white/70', !isActive);
+    });
+  }
+
+  function setLanguage(lang: Language) {
+    currentLanguage = lang;
+    applyTranslations(lang);
+    updateLanguageButtons(lang);
+    localStorage.setItem('portfolio-language', lang);
+    updateVenezuelaTime();
+  }
 
   function updateVenezuelaTime() {
     const el = document.getElementById('local-time-value');
@@ -461,10 +822,35 @@ const contacts = [
       hour12: false,
       timeZone: 'America/Caracas',
     };
-    el.textContent = new Intl.DateTimeFormat('es-VE', options).format(now);
+    const locale = currentLanguage === 'en' ? 'en-US' : 'es-VE';
+    el.textContent = new Intl.DateTimeFormat(locale, options).format(now);
   }
-  updateVenezuelaTime();
+
+  const savedLanguage = localStorage.getItem('portfolio-language');
+  const preferredLanguage: Language = savedLanguage === 'en' || savedLanguage === 'es'
+    ? savedLanguage
+    : (navigator.language.toLowerCase().startsWith('en') ? 'en' : 'es');
+
+  setLanguage(preferredLanguage);
+
   setInterval(updateVenezuelaTime, 60000);
+
+  const translateButtons = document.querySelectorAll<HTMLButtonElement>('[data-translate-button]');
+  langButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const lang = button.dataset.langSwitch;
+      if (lang === 'es' || lang === 'en') {
+        setLanguage(lang);
+      }
+    });
+  });
+
+  translateButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextLanguage: Language = currentLanguage === 'es' ? 'en' : 'es';
+      setLanguage(nextLanguage);
+    });
+  });
 
   if (!reducedMotion) {
     const parallaxElements = document.querySelectorAll<HTMLElement>('[data-parallax]');
